@@ -3,9 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { PostsComponent } from './dashboard/posts/posts.component';
 import { ErrorComponent } from './error/error.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+
+  {path: "home",component: HomeComponent},
   {path: "login",component: LoginComponent},
   {path: "dashboard",component: HeaderComponent},
   {path: "dashboard/posts",component: PostsComponent},
