@@ -1,0 +1,130 @@
+<app-header></app-header>
+
+<div class="content-body">
+  <div class="container-fluid mt-3">
+    <div class="row">
+      <div class="col-lg-12">
+          
+        <div class="card">
+              <div class="card-body">
+                  <div class="card-title">
+                      <h4>Table Basic</h4>
+                      <p *ngIf="loadedPosts.length < 1 && !isFetching">No posts
+    
+                        available!</p>
+                  </div>
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Image</th>
+                                  <th>Title</th>
+                                  <th>Content</th>
+                                  <th>Status</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let post of loadedPosts;let i = index ">
+                                  <th>{{i + 1}}</th>
+                                  <td >
+                                    <img style="width:80px" src="{{ post.img }}" alt="">
+                                  </td>
+                                  <td>{{ post.title }}</td>                     
+                                  <td>{{ post.content }}</td>
+                                  <td>
+                                    <span  class="badge badge-success">Show</span>
+                                    
+  
+                                    
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-primary" style="margin-right:8px " (click)="onEditPosts(post.id!)">Edit</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#basicModal">Delete</button>
+                                  </td>
+                                  <div class="modal fade" id="basicModal">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete post</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Are you sure!!!</div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="onDeletePosts(post.id!)">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                              </tr>
+                              
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="form-validation">
+                <form class="form-valide" #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+                  <div class="form-group row">
+                    <label class="col-lg-4 col-form-label" for="val-username">Title <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-6">
+                      <input type="text" class="form-control" id="val-username" [(ngModel)]="post.title" name="title"
+                        placeholder="Enter a title..">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-4 col-form-label" for="val-username">Image <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-6">
+                      <input type="text" class="form-control" id="val-username" [(ngModel)]="post.img" name="img"
+                        placeholder="Enter a url image..">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-lg-4 col-form-label" for="val-skill">Best Skill <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-6">
+                      <select [(ngModel)]="post.status" name="status" class="form-control" id="val-skill">
+                        <option value="">Please select</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-lg-4 col-form-label" for="val-suggestions">Content <span
+                        class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-6">
+                      <textarea class="form-control" id="val-suggestions" [(ngModel)]="post.content" name="content"
+                        rows="5" placeholder="What would you like to see?"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-lg-8 ml-auto">
+                      <button type="submit" class="btn btn-primary" [disabled]="!postForm.valid">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <button (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

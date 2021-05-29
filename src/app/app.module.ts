@@ -1,0 +1,42 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './dashboard/header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { PostsComponent } from './dashboard/posts/posts.component';
+import { ErrorComponent } from './error/error.component';
+import { AngularFireModule } from '@angular/fire';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    SidebarComponent,
+    LoginComponent,
+    PostsComponent,
+    ErrorComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyD1APCU2m2Dx1052G2fkqhztPZrCmqPcT4",
+      authDomain: "test-project-35ec0.firebaseapp.com",
+      databaseURL: "https://test-project-35ec0-default-rtdb.firebaseio.com",
+      projectId: "test-project-35ec0",
+      storageBucket: "test-project-35ec0.appspot.com",
+      messagingSenderId: "914973618085",
+      appId: "1:914973618085:web:0b8a50a8a58486b78ec24c",
+      measurementId: "G-1R5Z1VV7EW"
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
