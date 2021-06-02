@@ -12,6 +12,8 @@ import { ErrorComponent } from './error/error.component';
 import { AngularFireModule } from '@angular/fire';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './home/products/products.component';
+import { HeaderHomeComponent } from './home/header-home/header-home.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { ProductsComponent } from './home/products/products.component';
     PostsComponent,
     ErrorComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    HeaderHomeComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

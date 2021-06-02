@@ -1,0 +1,159 @@
+
+/* NAVBAR */
+
+.nav-link {
+
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    top: 90%;
+    left: 0;
+    background-color: black;
+    height: 2px;
+    width: 0;
+    transition: all 0.8s ease;
+  
+  }
+  
+  .nav-link:hover::after {
+  
+    width: 100%;
+  }
+  
+  .navbar-icon {
+    width: 100%;
+  }
+  
+  .navbar-brand {
+    width: 160px;
+    padding: 0 0;
+  }
+  
+  .btn-outline-success {
+    color: black !important;
+    border-color: black !important;
+  }
+  
+  .btn {
+    border-radius: 0 !important;
+  }
+  
+  .form-control {
+    border-radius: 0 !important;
+    border: 1px solid black !important;
+  }
+  
+  .btn-outline-success:hover {
+    color: #fff !important;
+    background-color: black !important;
+  
+  }
+  
+  .navbar-brand {
+    margin-right: 80px !important;
+  }
+
+
+  .navbar-nav li {
+    font-size: 14px;
+  }
+  
+  .navbar {
+    box-shadow: 1px -8px 10px black;
+    padding: 5px 5px !important;
+    height: 60px;
+  
+  }
+  
+  .nav-item {
+    margin-right: 10%;
+  }
+  
+  .navbar-toggler {
+    font-size: 22px !important;
+  
+  }
+  
+  .navbar__right {
+    display: flex;
+    margin-right: 2%;
+  }
+  
+  .navbar__right-item {
+    font-size: 20px;
+  }
+  
+  .navbar__right-account {
+    display: flex;
+    align-items: center;
+    margin-right: 14px;
+  }
+  
+  .navbar_acc {
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 8px;
+  }
+  
+  .fa-shopping-cart {
+    position: relative;
+  }
+  
+  .fa-shopping-cart::after {
+    content: "5";
+    position: absolute;
+    font-size: 17px;
+  
+    width: 22px;
+    height: 22px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 300;
+    top: -50%;
+    right: -50%;
+    background-color: #b32824;
+    color: white;
+    border-radius: 50%;
+  
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      height: auto;
+    }
+  }
+  
+  
+  
+  .col-men {
+    width: 304px;
+  }
+  
+  
+  
+  
+  
+  .admin__imgs {
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .admin__options-img {
+  
+    position: relative;
+  
+    letter-spacing: 1px;
+    width: 100%;
+    height: 100px;
+    background-image: url(https://images.pexels.com/photos/2486168/pexels-photo-2486168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+  }
+  
+  .admin__options {}
+  

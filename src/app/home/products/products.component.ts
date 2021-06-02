@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PostsService} from '../../services/posts.service';
+import {Post} from '../../model/post.model';
 
 @Component({
   selector: 'app-products',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  loadedPosts:Post[] = [];
+  error = null;
+  constructor(private postsService: PostsService) { }
 
-  constructor() { }
+  ngOnInit() {
+    // Send Http request
+    this.postsService.fetchPosts().subscribe( posts => {
+      // this.isFetching = false;
+      this.loadedPosts = posts;
+      console.log(this.loadedPosts)
 
-  ngOnInit(): void {
+     
+    }, error =>{
+      this.error = error.message;
+    });
+    
   }
 
 }

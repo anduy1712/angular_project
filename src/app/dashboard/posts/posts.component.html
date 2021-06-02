@@ -26,8 +26,8 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <tr *ngFor="let post of loadedPosts;let i = index ">
-                                  <th>{{i + 1}}</th>
+                              <tr *ngFor="let post of loadedPosts | paginate: { itemsPerPage: 3, currentPage: p };let i = index ">
+                                  <th>{{ 3 * (p - 1) + i + 1}}</th>
                                   <td >
                                     <img style="width:80px" src="{{ post.img }}" alt="">
                                   </td>
@@ -63,6 +63,8 @@
                               
                           </tbody>
                       </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
                   </div>
               </div>
           </div>
