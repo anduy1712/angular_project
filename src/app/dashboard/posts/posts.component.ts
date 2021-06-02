@@ -11,7 +11,8 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 
 export class PostsComponent implements OnInit {
-
+  p: number = 1;
+  // collection: any[] = someArrayOfThings;
   isFetching = false;
   loadedPosts:Post[] = [];
   post = {id:'',title:'',content:'',img:'',status: false};
