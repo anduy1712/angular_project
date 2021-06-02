@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { PostsComponent } from './dashboard/posts/posts.component';
 import { ErrorComponent } from './error/error.component';
 import { AngularFireModule } from '@angular/fire';
+import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './home/products/products.component';
+import { HeaderHomeComponent } from './home/header-home/header-home.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -18,9 +22,13 @@ import { AngularFireModule } from '@angular/fire';
     SidebarComponent,
     LoginComponent,
     PostsComponent,
-    ErrorComponent
+    ErrorComponent,
+    HomeComponent,
+    ProductsComponent,
+    HeaderHomeComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
