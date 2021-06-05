@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 
@@ -50,5 +50,26 @@ export class PostsService {
     
     
     return this.http.delete<any>(`https://test-project-35ec0-default-rtdb.firebaseio.com/posts/${id}.json`).subscribe(data => console.log(data))
+  }
+  categoriesPosts() {
+    return this.http
+    .get<{[key:string]:Post}>('https://test-project-35ec0-default-rtdb.firebaseio.com/posts.json')
+    .pipe(
+      map((responseData: any) => {
+        const postsArray = [];
+        for(const key in responseData) {
+          console.log(responseData[key].status,'2222')
+
+          if (responseData[key].status == false)
+          {
+            if(responseData.hasOwnProperty(key)) {
+              postsArray.push({...responseData[key], id: key});
+            }
+          }
+          
+        }
+        return postsArray;
+      })
+    )
   }  
 }

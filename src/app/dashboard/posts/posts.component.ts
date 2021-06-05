@@ -26,7 +26,7 @@ export class PostsComponent implements OnInit {
     this.postsService.fetchPosts().subscribe( posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
-      console.log(this.loadedPosts)
+      // console.log(this.loadedPosts)
 
      
     }, error =>{

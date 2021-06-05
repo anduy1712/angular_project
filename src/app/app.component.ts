@@ -19,11 +19,18 @@ export class AppComponent implements OnInit {
 
   title = 'angular-tour-of-heroes';
   ngOnInit() {
+    this.postsService.categoriesPosts().subscribe( posts => {
+      console.log(posts)
+
+     
+    }, error =>{
+      this.error = error.message;
+    })
     // Send Http request
     this.postsService.fetchPosts().subscribe( posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
-      console.log(this.loadedPosts)
+      // console.log(this.loadedPosts)
 
      
     }, error =>{
