@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   isFetching = false;
   loadedPosts:Post[] = [];
-  post = {id:'',title:'',content:'',img:'',status: false};
+  post = {id:'',title:'',content:'',img:'',category: '',price: ''};
   // tasksEdit= {};
   taskStatus = false;
   error = null;
@@ -40,11 +40,11 @@ export class AppComponent implements OnInit {
   }
   constructor(private http: HttpClient,private postsService: PostsService) {}
   //POST
-   onCreatePost(postData: {img: string;status: boolean; title: string; content: string }) {
+   onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string }) {
     if(this.taskStatus)
     {
       this.postsService.editPosts(this.post);
-      this.post = {id:'',title:'',content:'',img:'',status: false};
+      this.post = {id:'',title:'',content:'',img:'',category: '',price: ''};
     }
     else{
       
@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
       {
         this.post.id = post.id as string;
         this.post.img = post.img as string;
-        this.post.status = post.status as boolean;
+        this.post.category = post.category as string;
         this.post.title = post.title as string;
         this.post.content = post.content as string;
       }

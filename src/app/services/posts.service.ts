@@ -58,9 +58,9 @@ export class PostsService {
       map((responseData: any) => {
         const postsArray = [];
         for(const key in responseData) {
-          console.log(responseData[key].status,'2222')
+          console.log(responseData[key].category,'2222')
 
-          if (responseData[key].status == false)
+          if (responseData[key].category == 'BLACKZERI')
           {
             if(responseData.hasOwnProperty(key)) {
               postsArray.push({...responseData[key], id: key});

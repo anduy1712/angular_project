@@ -15,7 +15,7 @@ export class PostsComponent implements OnInit {
   // collection: any[] = someArrayOfThings;
   isFetching = false;
   loadedPosts:Post[] = [];
-  post = {id:'',title:'',content:'',img:'',status: false};
+  post = {id:'',title:'',content:'',img:'',category: '',price:''};
   // tasksEdit= {};
   taskStatus = false;
   error = null;
@@ -41,14 +41,15 @@ export class PostsComponent implements OnInit {
     this.isLogout.emit()
   }
   //POST
-   onCreatePost(postData: {img: string;status: boolean; title: string; content: string }) {
-    if(this.taskStatus)
+   onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string; }) {
+     //Check edit or create 
+    if(this.taskStatus) //edit
     {
       this.postsService.editPosts(this.post);
-      this.post = {id:'',title:'',content:'',img:'',status: false};
+      this.post = {id:'',title:'',content:'',img:'',category: '',price:''};
     }
     else{
-      
+      //create 
       this.postsService.createAndStorePosts(postData);
       this.onFetchPosts()
     }
@@ -80,7 +81,7 @@ export class PostsComponent implements OnInit {
       {
         this.post.id = post.id as string;
         this.post.img = post.img as string;
-        this.post.status = post.status as boolean;
+        this.post.category = post.category as string;
         this.post.title = post.title as string;
         this.post.content = post.content as string;
       }
