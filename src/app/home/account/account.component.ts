@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../services/firebase.service';
-import {AuthService} from '../services/auth.service'
 import { Router } from '@angular/router';
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+import { AuthService } from 'src/app/services/auth.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
-export class LoginComponent implements OnInit{
-  title = 'firebase-angular-auth';
+@Component({
+  selector: 'app-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.css']
+})
+export class AccountComponent implements OnInit {
+
+  
   isSignedIn = false
   constructor(public firebaseService : FirebaseService,private authService: AuthService,private router: Router){}
   ngOnInit(){

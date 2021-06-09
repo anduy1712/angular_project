@@ -1,0 +1,82 @@
+<app-header-home></app-header-home>
+
+<div class=" container-fluid">
+  <div class="product row" *ngFor="let post of loadedPosts;let i = index ">
+    <div class="product_item col-md-6" >
+      <div class="product_img">
+        <div class="easyzoom">
+          <a href="images/zoom.jpg">
+            <img style="margin:0 auto;"
+              src="{{ post.img }}" alt="">
+          </a>
+        </div>
+      </div>
+      <div class="product_note">
+        <i class="product_note-icon fas fa-search"></i>
+        <p class="product_note-item">Zoom the image with the mouse</p>
+      </div>
+
+
+    </div>
+    <div class="product_item col-md-6">
+      <div class="product_profile">
+        <h2 class="product_profile-heading">{{ post.title }}</h2>
+        <div class="product_profile-star">
+          <i class="product_icon fas fa-star"></i>
+          <i class="product_icon fas fa-star"></i>
+          <i class="product_icon fas fa-star"></i>
+          <i class="product_icon fas fa-star"></i>
+          <i class="product_icon-inactive fas fa-star"></i>
+          <p class="product_profile-review">1 review</p>
+        </div>
+
+        <p class="product_profile-stock">in stock</p>
+        <p>SKU: DP1</p>
+        <p class="product_profile-price">${{ post.price }}</p>
+        <p class="product_profile-infor">{{ post.content }}</p>
+        <div class="product_profile-color">
+          <p style="font-size:1.2rem;font-weight: 500">Color:</p>
+          <img
+            src="https://cdn.shopify.com/s/files/1/0264/5000/1980/products/12_671ef0a6-90f5-4dd3-8491-d8dd4dbeba49_1024x1024.jpg?v=1569991091"
+            alt="">
+          <img
+            src="https://cdn.shopify.com/s/files/1/0264/5000/1980/products/13_d7e06b9a-ee61-4787-a888-a4497db798a9_1024x1024.jpg?v=1569991091"
+            alt="">
+        </div>
+        <p style="font-size:1.2rem;font-weight: 500">Material:</p>
+        <div class="product_profile-material">
+          <p class="material-item-active material-item">Leather</p>
+          <p class="material-item">Strap</p>
+        </div>
+        <p class="product_profile-quantity" style="font-size:1.2rem;font-weight: 500">Quantity:</p>
+        <p style="font-size:1.2rem;display:inline-block" class="product_profile-subtotal">Subtotal: </p>
+        <p style="font-weight: 700;display: inline-block;font-size: 1.2rem;letter-spacing: 0.2px;">$870.00</p>
+        <button class="product_profile-btn" style="display:block">Add to cart</button>
+        <button class="product_profile-btn-white" style="display:block">Buy it now</button>
+        <div class="product_support">
+          <div class="product_support-item">
+            <i class="sp_item-icon fas fa-globe-americas"></i>
+            <p class="sp_item-content">Free Shipping World Wide</p>
+          </div>
+          <div class="product_support-item">
+            <i class="sp_item-icon fas fa-undo"></i>
+            <p class="sp_item-content">Free in-store return</p>
+          </div>
+          <div class="product_support-item">
+            <i class="sp_item-icon fas fa-shield-alt"></i>
+            <p class="sp_item-content">Secure shopping guarantee</p>
+          </div>
+          <div class="product_support-item">
+            <i class="sp_item-icon fas fa-globe-americas"></i>
+            <p class="sp_item-content">24 month</p>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>

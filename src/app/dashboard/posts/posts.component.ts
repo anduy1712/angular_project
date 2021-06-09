@@ -4,6 +4,9 @@ import { map } from 'rxjs/operators'
 import {Post} from '../../model/post.model';
 import {PostsService} from '../../services/posts.service';
 import { FirebaseService } from '../../services/firebase.service';
+import {AuthService} from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -35,10 +38,17 @@ export class PostsComponent implements OnInit {
     
   }
   @Output() isLogout = new EventEmitter<void>()
-  constructor(private http: HttpClient,private postsService: PostsService,public firebaseService: FirebaseService) {}
+  constructor(
+    private http: HttpClient,
+    private postsService: PostsService,
+    public firebaseService: FirebaseService,
+    private authService: AuthService,private router: Router) {}
   logout(){
     this.firebaseService.logout()
     this.isLogout.emit()
+    this.authService.logout();
+    this.router.navigate(['/home/account']);
+    
   }
   //POST
    onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string; }) {
@@ -82,6 +92,7 @@ export class PostsComponent implements OnInit {
         this.post.id = post.id as string;
         this.post.img = post.img as string;
         this.post.category = post.category as string;
+        this.post.price = post.price as string;
         this.post.title = post.title as string;
         this.post.content = post.content as string;
       }

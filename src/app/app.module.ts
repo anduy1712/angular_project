@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './home/products/products.component';
 import { HeaderHomeComponent } from './home/header-home/header-home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { AccountComponent } from './home/account/account.component';
+import { DetailComponent } from './home/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ErrorComponent,
     HomeComponent,
     ProductsComponent,
-    HeaderHomeComponent
+    HeaderHomeComponent,
+    AccountComponent,
+    DetailComponent
   ],
   imports: [
     NgxPaginationModule,
