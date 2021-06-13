@@ -17,7 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { AccountComponent } from './home/account/account.component';
 import { DetailComponent } from './home/detail/detail.component';
 import { CartComponent } from './home/cart/cart.component';
-
+import { CommonModule } from '@angular/common';
+import { DashboardModule } from './dashboard/dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +35,10 @@ import { CartComponent } from './home/cart/cart.component';
     CartComponent
   ],
   imports: [
+    DashboardModule,
     NgxPaginationModule,
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { PostsComponent } from './dashboard/posts/posts.component';
+import { UsersComponent } from './dashboard/users/users.component';
 import { ErrorComponent } from './error/error.component';
 import { AccountComponent } from './home/account/account.component';
 import { CartComponent } from './home/cart/cart.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: "posts",component: PostsComponent},
+      {path: "users",component: UsersComponent},
     ]
   },
   {path: "**",component: ErrorComponent},

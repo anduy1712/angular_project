@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
   taskStatus = false;
   error = null;
 
-  title = 'angular-tour-of-heroes';
+  title = 'Watch Shop';
   ngOnInit() {
     // Send Http request
     this.postsService.fetchPosts().subscribe( posts => {

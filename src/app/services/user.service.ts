@@ -6,9 +6,23 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService  {
 
   constructor(private http: HttpClient) { }
+  fetchPosts() {
+    return this.http
+    .get<{[key:string]:User}>('https://test-project-35ec0-default-rtdb.firebaseio.com/users.json')
+    .pipe(
+      map((responseData: any) => {
+        const usersArray = [];
+        for(const key in responseData) {
+          if(responseData.hasOwnProperty(key)) {
+            usersArray.push(responseData[key]);
+          }
+        }
+        return usersArray;
+      })
+    )}
   createAndStoreUsers(users: User) {
     // Send Http request
     this.http
