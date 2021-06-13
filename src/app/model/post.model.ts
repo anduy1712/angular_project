@@ -1,7 +1,8 @@
 export class Post {
     id?: string;
     img?: string;
-    status?: boolean;
+    category?: string;
     title?: string;
+    price?: string;
     content?: string;
 }

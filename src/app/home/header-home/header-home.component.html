@@ -12,25 +12,30 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul style="" class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="" >Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="home/products">Mens</a>
+          <a class="nav-link" routerLink="/home/products/men" >Mens</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">Womens</a>
         </li>
         <li class="nav-item active">
 
-          <a class="nav-link" href="account.html">Account</a>
+          <a class="nav-link" routerLink="/home/account" href="">Account</a>
         </li>
       </ul>
       <div class="navbar__right">
         <div class="navbar__right-account">
-          <span class="navbar_acc">ACCOUNT</span>
+          <span class="navbar_acc">{{isSignedIn ? email : 'ACCOUNT'}} </span>
           <i class="navbar__right-item far fa-user"></i>
+          <span (click)="logOut()" class="navbar_acc">{{isSignedIn ? 'Logout' : ''}} </span>
+
         </div>
-        <i class="navbar__right-item fas fa-shopping-cart"></i>
+        <div class="shoppingCart">
+          <i routerLink="/home/cart" class="navbar__right-item fas fa-shopping-cart"></i>
+          <span class="numberCart">{{items.length}}</span>
+        </div>
 
 
       </div>
