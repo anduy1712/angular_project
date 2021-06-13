@@ -16,6 +16,7 @@ import { HeaderHomeComponent } from './home/header-home/header-home.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { AccountComponent } from './home/account/account.component';
 import { DetailComponent } from './home/detail/detail.component';
+import { CartComponent } from './home/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DetailComponent } from './home/detail/detail.component';
     ProductsComponent,
     HeaderHomeComponent,
     AccountComponent,
-    DetailComponent
+    DetailComponent,
+    CartComponent
   ],
   imports: [
     NgxPaginationModule,

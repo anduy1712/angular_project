@@ -5,6 +5,7 @@ import { HeaderComponent } from './dashboard/header/header.component';
 import { PostsComponent } from './dashboard/posts/posts.component';
 import { ErrorComponent } from './error/error.component';
 import { AccountComponent } from './home/account/account.component';
+import { CartComponent } from './home/cart/cart.component';
 import { DetailComponent } from './home/detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './home/products/products.component';
@@ -13,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {path: "",component: HomeComponent},
   {path: "home",component: HomeComponent},
+  {path: "home/cart",component: CartComponent},
   {path: "home/products/:id",component: ProductsComponent},
   {path: "home/detail/:id",component: DetailComponent},
 
@@ -21,7 +23,7 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: HeaderComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {path: "posts",component: PostsComponent},
     ]

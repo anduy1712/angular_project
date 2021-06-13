@@ -55,7 +55,7 @@
   
   <div class="row_contain row">
     <div class="col-men col-md-3 col-sm-6" *ngFor="let post of loadedPosts;let i = index ">
-      <div class="card_men" routerLink="/home/detail/{{post.id}}" >
+      <div class="card_men"  >
         <div class="card_men-images">
           <img class="card_men-img-item"
             src="{{ post.img }}"
@@ -63,10 +63,10 @@
           <p class="card_men-sold">Sold Out</p>
           <div class="card_men-listicon">
             <i class="card_men-icon1 far fa-heart"></i>
-            <i class="card_men-icon2 far fa-eye"></i>
+            <i routerLink="/home/detail/{{post.id}}" class="card_men-icon2 far fa-eye"></i>
             <i class="card_men-icon3 fas fa-sync-alt"></i>
           </div>
-          <p class="card_select">Select Options</p>
+          <p (click)="addToCart(post)" class="card_select">Select Options</p>
         </div>
         <div class="card_men-profile">
           <p class="card_men-product">{{ post.category }}</p>

@@ -31,22 +31,18 @@
                         <span >By creating an account you will be able to shop faster, be up to date on an order's status,
                              and keep track of the orders you have previously made.</span>
                     </div>
-                    <form action="" class="account__page-form">
+                    <form #usersForm="ngForm" (ngSubmit)="onCreateUser(usersForm.value)" class="account__page-form">
                         <div class="form__group">
                             <label for="">First Name:</label>
-                            <input class="form__group-input" type="text" placeholder="First Name">
-                        </div>
-                        <div class="form__group">
-                            <label for="">Last Name:</label>
-                            <input class="form__group-input" type="text" placeholder="Last Name">
+                            <input class="form__group-input" type="text" [(ngModel)]="user.name" name="name" placeholder="First Name">
                         </div>
                         <div class="form__group">
                             <label for="">Email:</label>
-                            <input class="form__group-input" type="text" placeholder="Email">
+                            <input class="form__group-input" type="text" [(ngModel)]="user.email" name="email" placeholder="Email">
                         </div>
                         <div class="form__group">
                                 <label for="">Password:</label>
-                                <input class="form__group-input" type="password" placeholder="Password">
+                                <input class="form__group-input" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
                         </div>
                         
                         <button type="submit" class="btnn btn__watch">Create an account</button>

@@ -18,20 +18,17 @@ export class PostsService {
         postData
       )
       .subscribe((responseData) => {
-        console.log(responseData);
       });
   }
   //GET
 
   fetchPosts() {
-    console.log('GET DATA.....')
     return this.http
     .get<{[key:string]:Post}>('https://test-project-35ec0-default-rtdb.firebaseio.com/posts.json')
     .pipe(
       map((responseData: any) => {
         const postsArray = [];
         for(const key in responseData) {
-          
           if(responseData.hasOwnProperty(key)) {
             postsArray.push({...responseData[key], id: key});
           }
@@ -42,10 +39,9 @@ export class PostsService {
     //DELETE
   
   editPosts(post: Post) {
-    
-    
     return this.http.put<any>(`https://test-project-35ec0-default-rtdb.firebaseio.com/posts/${post.id}.json`,post).subscribe(data => console.log(data))
-  }  
+  }
+  
   deletePosts(id: string) {
     
     
@@ -58,15 +54,12 @@ export class PostsService {
       map((responseData: any) => {
         const postsArray = [];
         for(const key in responseData) {
-          console.log(responseData[key].category,'2222')
-
           if (responseData[key].category == 'BLACKZERI')
           {
             if(responseData.hasOwnProperty(key)) {
               postsArray.push({...responseData[key], id: key});
             }
           }
-          
         }
         return postsArray;
       })

@@ -4,10 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  public isAuthorized = false;
+  isAuthorized = false;
   constructor() { }
   login() {
+    console.log('vo dc roi')
+
     this.isAuthorized = true;
+    console.log(this.isAuthorized,'test')
+
     
   }
   logout() {
