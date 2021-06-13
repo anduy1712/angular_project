@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
+import {AuthService} from '../services/auth.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +11,7 @@ import { FirebaseService } from '../services/firebase.service';
 export class LoginComponent implements OnInit{
   title = 'firebase-angular-auth';
   isSignedIn = false
-  constructor(public firebaseService : FirebaseService){}
+  constructor(public firebaseService : FirebaseService,private authService: AuthService,private router: Router){}
   ngOnInit(){
     if(localStorage.getItem('user')!== null)
     this.isSignedIn= true
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit{
     await this.firebaseService.signin(email,password)
     if(this.firebaseService.isLoggedIn)
     this.isSignedIn = true
+    this.authService.login();
+    this.router.navigate(['/dashboard/posts']);
   }
   handleLogout(){
     this.isSignedIn = false
