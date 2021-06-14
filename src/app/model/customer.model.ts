@@ -4,4 +4,6 @@ export class Customer {
     name?:string;
     email?:string;
     product?:string;
+    status?:boolean;
+
 }

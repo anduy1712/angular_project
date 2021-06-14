@@ -18,20 +18,23 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>PassWord</th>
+                                    <th>Password</th>
                                     <th>Auth</th>
                                     <th>Action</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let user of loadedUsers">
-                                    <th></th>
+                                <tr *ngFor="let user of loadedUsers | paginate: { itemsPerPage: 3, currentPage: p };let i = index ">
+                                    <th>{{ 3 * (p - 1) + i + 1}}</th>
                                     <td>{{ user.name }}</td>
                                     <td>{{ user.email }}</td>
-                                    <td>{{ user.password }}</td>  
-                                    <!-- <td>
-                                      <button class="btn btn-primary" style="margin-right:8px " (click)="onEditPosts(post.id!)">Edit</button>
+                                    <td type="password">{{ user.password }}</td> 
+                                    <td>
+                                      Admin
+                                    </td> 
+                                    <td>
+                                      <button class="btn btn-primary" style="margin-right:8px " (click)="onEditPosts(user.id!)">Edit</button>
                                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#basicModal">Delete</button>
                                     </td>
                                     <div class="modal fade" id="basicModal">
@@ -45,16 +48,16 @@
                                               <div class="modal-body">Are you sure!!!</div>
                                               <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="onDeletePosts(post.id!)">Save changes</button>
+                                                  <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="onDeletePosts(user.id!)">Save changes</button>
                                               </div>
                                           </div>
                                       </div>
-                                    </div> -->
+                                    </div>
                                 </tr>
                                 
                             </tbody>
                         </table>
-            <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
   
                     </div>
                 </div>

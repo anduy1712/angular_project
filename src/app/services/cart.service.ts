@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Post } from '../model/post.model';
 import { HttpClient } from '@angular/common/http';
 import { Customer } from '../model/customer.model';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,4 +38,18 @@ export class CartService {
       .subscribe((responseData) => {
       });
   }
+  fetchPosts() {
+    return this.http
+    .get<{[key:string]:Customer}>('https://test-project-35ec0-default-rtdb.firebaseio.com/customers.json')
+    .pipe(
+      map((responseData: any) => {
+        const usersArray = [];
+        for(const key in responseData) {
+          if(responseData.hasOwnProperty(key)) {
+            usersArray.push(responseData[key]);
+          }
+        }
+        return usersArray;
+      })
+    )}
 }

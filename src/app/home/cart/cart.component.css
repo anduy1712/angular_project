@@ -50,7 +50,9 @@ td {
   padding: 10px 0;
   border-bottom: 1px dashed #d9d9d9;
 }
-
+.cart__total-total p, span {
+  color:black;
+}
 .cart_total-shopping {
   padding: 10px 0;
   border-bottom: 1px dashed #d9d9d9;
