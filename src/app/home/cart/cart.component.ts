@@ -39,7 +39,9 @@ export class CartComponent implements OnInit {
   }
   removeItem(cart: any){
     this.items = this.cartService.removeItems(cart);
-
+    this.total = this.items.reduce((sum:any,item:any)=> {
+      return sum + Number(item.price);
+    },0)
   }
   //CREATE CUSTOMER
    async onCreateCustomer(profile:any) {

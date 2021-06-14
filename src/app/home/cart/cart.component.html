@@ -26,14 +26,10 @@
             ${{item.price}}
           </td>
           <td>
-            <form action="/ShoppingCart/Update_Quantity_Cart" method="post"> <input type="hidden" value="22"
-                name="ID_Product" />
-              <input type="number" value="1" name="Quantity" />
-              <input class="input__update" type="submit" value="Update Quantity" />
-            </form>
+           1
           </td>
           <td>
-            Total: 230
+            Total: ${{item.price}}
           </td>
           <td>
             <a class="btn btn-danger" (click)="removeItem(item)">Remove</a>
@@ -51,7 +47,7 @@
         <h3>Cart Total</h3>
         <div class="cart__total-total">
           <p>Subtotal:</p>
-          <span>${{total}}</span><br />
+          <span> ${{total}}</span><br />
         </div>
         <div class="cart_total-shopping">
           <p>Shipping:</p>

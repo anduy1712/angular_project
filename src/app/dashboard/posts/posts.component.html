@@ -52,7 +52,7 @@
                                             <div class="modal-body">Are you sure!!!</div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="onDeletePosts(post.id!)">Save changes</button>
+                                                <button type="button" data-dismiss="modal" class="btn btn-primary" (click)="onDeletePosts(post.id!)">Delete</button>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@
                           </tbody>
                       </table>
           <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
+                      <a class="text-primary" (click)="onFetchPosts()">Fetch Post</a>
                   </div>
               </div>
           </div>
@@ -128,7 +128,6 @@
             </div>
 
           </div>
-          <button (click)="logout()">Logout</button>
         </div>
       </div>
     </div>

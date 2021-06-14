@@ -51,7 +51,7 @@ export class PostsComponent implements OnInit {
     
   }
   //POST
-   onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string; }) {
+    onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string; }) {
      //Check edit or create 
     if(this.taskStatus) //edit
     {
@@ -60,8 +60,9 @@ export class PostsComponent implements OnInit {
     }
     else{
       //create 
-      this.postsService.createAndStorePosts(postData);
+       this.postsService.createAndStorePosts(postData);
       this.onFetchPosts()
+      
     }
   }
   //GET
@@ -71,6 +72,7 @@ export class PostsComponent implements OnInit {
     this.postsService.fetchPosts().subscribe( posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
+      console.log(posts,'get posts');
     });
   }
   onClearPosts() {

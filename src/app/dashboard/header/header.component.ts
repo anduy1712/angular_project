@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public firebaseService: FirebaseService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
+  @Output() isLogout = new EventEmitter<void>()
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.firebaseService.logout()
+    this.isLogout.emit()
+    this.authService.logout();
+    this.router.navigate(['/home/account']);
+    
+  }
 }
