@@ -7,10 +7,8 @@ export class AuthService {
   isAuthorized = false;
   constructor() { }
   login() {
-    console.log('vo dc roi')
 
     this.isAuthorized = true;
-    console.log(this.isAuthorized,'test')
 
     
   }

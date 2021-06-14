@@ -9,9 +9,9 @@ import { Post } from '../model/post.model';
 export class PostsService {
   constructor(private http: HttpClient) {}
   //POST
-  createAndStorePosts(postData: Post) {
+   createAndStorePosts(postData: Post) {
     // Send Http request
-    this.http
+     this.http
       .post<{ name: string }>(
         'https://test-project-35ec0-default-rtdb.firebaseio.com/posts.json',
 
@@ -19,6 +19,8 @@ export class PostsService {
       )
       .subscribe((responseData) => {
       });
+    console.log('Create Post')
+
   }
   //GET
 
