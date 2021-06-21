@@ -35,7 +35,7 @@ export class AccountComponent implements OnInit {
       this.isSignedIn = true;
       this.authService.login(); //true 
 
-      // this.router.navigate(['/dashboard/posts']);
+      this.router.navigate(['/home']);
   }
   }
   handleLogout(){
