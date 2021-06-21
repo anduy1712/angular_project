@@ -33,7 +33,7 @@
                     <td>{{ cust.address }}</td>
                     <td><span class="badge badge-primary">{{ cust.status ? 'Complete' : 'Wait' }}</span></td>
                     <td>
-                      <a data-toggle="modal" data-target=".bd-example-modal-lg" class="text-primary">Xem chi tiết</a>
+                      <a  class="text-primary" routerLink="/dashboard/detailCus/{{cust.id_user}}">Xem chi tiết</a>
                     </td>
                     
                   </tr>
