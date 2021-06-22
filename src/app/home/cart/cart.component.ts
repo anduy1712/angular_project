@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
   custFrom:Customer[] = [];
   submitForm = false;
   ngOnInit(): void {
-  
+  //IF USER NULL, REDIRT TO HOME 
    if(localStorage.getItem('user') == null)
    {
      this.router.navigate(['/home'])

@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   category = '';
   error = null;
   constructor(private router: Router,private postsService: PostsService,private route: ActivatedRoute,private cartService: CartService) { }
-
+  quantity = this.cartService.getQuantity;
   ngOnInit() {
     //Get id from route
     this.route.paramMap.subscribe((params: ParamMap)=> {
@@ -38,10 +38,14 @@ export class ProductsComponent implements OnInit {
    
     
   }
+  //ADD PRODUCT TO CART
   addToCart(product: Post) {
+    //CHECK LOGIN
+    console.log(this.quantity);
     if(localStorage.getItem('user')!== null)
     {
       this.cartService.addToCart(product);
+
       window.alert('Your product has been added to the cart!');
     }
     else{

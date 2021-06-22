@@ -12,7 +12,8 @@ export class HeaderHomeComponent implements OnInit {
   isSignedIn = false
   email= '';
   constructor(private cartService: CartService,private firebaseService: FirebaseService) { }
-  items = this.cartService.getItems();
+  items = this.cartService.getQuantity();
+  
   ngOnInit(): void {
     if(localStorage.getItem('user')!== null)
     {var test = JSON.parse(localStorage.getItem('user')!);

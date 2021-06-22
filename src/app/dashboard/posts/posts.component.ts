@@ -18,24 +18,20 @@ export class PostsComponent implements OnInit {
   // collection: any[] = someArrayOfThings;
   isFetching = false;
   loadedPosts:Post[] = [];
-  post = {id:'',title:'',content:'',img:'',category: '',price:''};
+  post = {id:'',title:'',content:'',img:'',category: '',price: 0,quantity: 0};
   // tasksEdit= {};
   taskStatus = false;
   error = null;
 
   title = 'Watch Shop';
+  //GET PRODUCT WHEN LOAD
   ngOnInit() {
-    // Send Http request
     this.postsService.fetchPosts().subscribe( posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
-      // console.log(this.loadedPosts)
-
-     
     }, error =>{
       this.error = error.message;
     });
-    
   }
   @Output() isLogout = new EventEmitter<void>()
   constructor(
@@ -43,6 +39,7 @@ export class PostsComponent implements OnInit {
     private postsService: PostsService,
     public firebaseService: FirebaseService,
     private authService: AuthService,private router: Router) {}
+  //LOGOUT ACCOUNT 
   logout(){
     this.firebaseService.logout()
     this.isLogout.emit()
@@ -50,42 +47,40 @@ export class PostsComponent implements OnInit {
     this.router.navigate(['/home/account']);
     
   }
-  //POST
-    onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string; }) {
+  //POST :EDIT AND CREATE PRODUCT
+    onCreatePost(postData: {img: string;category: string; title: string; content: string;price: number;quantity: number; }) {
      //Check edit or create 
-    if(this.taskStatus) //edit
+    if(this.taskStatus) 
     {
+      //edit
       this.postsService.editPosts(this.post);
-      this.post = {id:'',title:'',content:'',img:'',category: '',price:''};
+      this.post = {id:'',title:'',content:'',img:'',category: '',price:0,quantity:0};
     }
     else{
       //create 
-       this.postsService.createAndStorePosts(postData);
+      postData.price = Number(postData.price);
+      postData.quantity = Number(postData.quantity);
+
+      this.postsService.createAndStorePosts(postData);
       this.onFetchPosts()
-      
     }
   }
-  //GET
-
+  //GET PRODUCT
   onFetchPosts() {
-    // Send Http request
     this.postsService.fetchPosts().subscribe( posts => {
       this.isFetching = false;
       this.loadedPosts = posts;
-      console.log(posts,'get posts');
     });
   }
   onClearPosts() {
-    // Send Http request
-    // this.postsService.deletePosts()
-    
+   
     
   }
+  //DELET POST
   onDeletePosts(id: string) {
-    
-    
     this.postsService.deletePosts(id);
   }
+  //EDIT POST
   onEditPosts(id: string){
     this.taskStatus = true;
     this.loadedPosts.filter( post => {
@@ -94,13 +89,11 @@ export class PostsComponent implements OnInit {
         this.post.id = post.id as string;
         this.post.img = post.img as string;
         this.post.category = post.category as string;
-        this.post.price = post.price as string;
+        this.post.price = post.price as number;
+        this.post.quantity = post.quantity as number;
         this.post.title = post.title as string;
         this.post.content = post.content as string;
       }
-      
-
-
       return post.id === id;
     })
     

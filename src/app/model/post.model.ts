@@ -3,6 +3,7 @@ export class Post {
     img?: string;
     category?: string;
     title?: string;
-    price?: string;
+    price?: number;
     content?: string;
+    quantity?: number;
 }
