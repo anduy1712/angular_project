@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   isFetching = false;
   loadedPosts:Post[] = [];
-  post = {id:'',title:'',content:'',img:'',category: '',price: ''};
+  post = {id:'',title:'',content:'',img:'',category: '',price: 0};
   // tasksEdit= {};
   taskStatus = false;
   error = null;
@@ -36,21 +36,20 @@ export class AppComponent implements OnInit {
     
   }
   constructor(private http: HttpClient,private postsService: PostsService) {}
-  //POST
-   onCreatePost(postData: {img: string;category: string; title: string; content: string;price: string }) {
+  //POST: EDIT AND CREATE PRODUCT
+   onCreatePost(postData: {img: string;category: string; title: string; content: string;price: number }) {
     if(this.taskStatus)
     {
       this.postsService.editPosts(this.post);
-      this.post = {id:'',title:'',content:'',img:'',category: '',price: ''};
+      this.post = {id:'',title:'',content:'',img:'',category: '',price: 0};
     }
     else{
-      
+      console.log(postData);
       this.postsService.createAndStorePosts(postData);
       this.onFetchPosts()
     }
   }
-  //GET
-
+  //GET PRODUCT
   onFetchPosts() {
     // Send Http request
     this.postsService.fetchPosts().subscribe( posts => {
@@ -64,11 +63,11 @@ export class AppComponent implements OnInit {
     
     
   }
+  //DELETE PRODUCT
   onDeletePosts(id: string) {
-    
-    
     this.postsService.deletePosts(id);
   }
+  //EDIT PRODUCT
   onEditPosts(id: string){
     this.taskStatus = true;
     this.loadedPosts.filter( post => {

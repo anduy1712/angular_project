@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CustomersComponent } from './customers/customers.component';
+import { DetailCusComponent } from './detail-cus/detail-cus.component';
 
 const dashboardRoutes: Routes = [
  
@@ -17,7 +18,8 @@ const dashboardRoutes: Routes = [
 @NgModule({
   declarations: [
     UsersComponent,
-    CustomersComponent
+    CustomersComponent,
+    DetailCusComponent
   ],
   imports: [
     NgxPaginationModule,

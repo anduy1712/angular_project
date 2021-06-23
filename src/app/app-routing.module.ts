@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { CustomersComponent } from './dashboard/customers/customers.component';
+import { DetailCusComponent } from './dashboard/detail-cus/detail-cus.component';
 import { HeaderComponent } from './dashboard/header/header.component';
 import { PostsComponent } from './dashboard/posts/posts.component';
 import { UsersComponent } from './dashboard/users/users.component';
@@ -30,6 +31,8 @@ const routes: Routes = [
       {path: "posts",component: PostsComponent},
       {path: "users",component: UsersComponent},
       {path: "customers",component: CustomersComponent},
+      {path: "detailCus/:id",component: DetailCusComponent},
+
 
     ]
   },
