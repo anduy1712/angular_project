@@ -55,13 +55,13 @@
             help.</span>
         </div>
         <div class="cart_total-checkout">
-          <input class="input__checkout" type="text" [(ngModel)]="customer.id_user" name="id_user" readonly="true"
+          <input style="background: #dadada;" class="input__checkout" type="text" [(ngModel)]="customer.id_user" name="id_user" readonly="true"
             placeholder="email" />
-          <input class="input__checkout" type="text" [(ngModel)]="customer.address" name="address" placeholder="address"
+          <input class="input__checkout" type="text" [(ngModel)]="customer.address" name="address" placeholder="Please enter your address"
             required />
         </div>
         <div class="btn__group">
-          <input class="btn__duyan" value="Register" />
+          <input (click)="editQuantity()" class="btn__duyan" value="Register" />
           <input type="submit" value="Checkout" class="btn__duyan" />
         </div>
 

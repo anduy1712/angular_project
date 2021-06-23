@@ -23,6 +23,7 @@ export class HeaderHomeComponent implements OnInit {
     else
     this.isSignedIn = false
   }
+  
   logOut(){
     this.isSignedIn= false;
     this.firebaseService.logout();

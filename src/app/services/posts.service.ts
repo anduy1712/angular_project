@@ -8,9 +8,8 @@ import { Post } from '../model/post.model';
 })
 export class PostsService {
   constructor(private http: HttpClient) {}
-  //POST
+  //POST: CREATE PRODUCT
    createAndStorePosts(postData: Post) {
-    // Send Http request
      this.http
       .post<{ name: string }>(
         'https://test-project-35ec0-default-rtdb.firebaseio.com/posts.json',
@@ -22,8 +21,7 @@ export class PostsService {
     console.log('Create Post')
 
   }
-  //GET
-
+  //GET: GET PRODUCT
   fetchPosts() {
     return this.http
     .get<{[key:string]:Post}>('https://test-project-35ec0-default-rtdb.firebaseio.com/posts.json')
@@ -38,17 +36,15 @@ export class PostsService {
         return postsArray;
       })
     )}
-    //DELETE
-  
+  //EDIT PRODUCT
   editPosts(post: Post) {
     return this.http.put<any>(`https://test-project-35ec0-default-rtdb.firebaseio.com/posts/${post.id}.json`,post).subscribe(data => console.log(data))
   }
-  
+  //DELETE PRODUCT
   deletePosts(id: string) {
-    
-    
     return this.http.delete<any>(`https://test-project-35ec0-default-rtdb.firebaseio.com/posts/${id}.json`).subscribe(data => console.log(data))
   }
+  //GET CATOGORIES PRODUCT
   categoriesPosts() {
     return this.http
     .get<{[key:string]:Post}>('https://test-project-35ec0-default-rtdb.firebaseio.com/posts.json')
@@ -66,5 +62,9 @@ export class PostsService {
         return postsArray;
       })
     )
-  }  
+  }
+  //EDIT QUANTITY PRODUCT
+  editQuantity(post: Post) {
+    return this.http.put<any>(`https://test-project-35ec0-default-rtdb.firebaseio.com/posts/${post.id}.json`,post).subscribe(data => console.log(data))
+  }
 }

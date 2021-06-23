@@ -4,6 +4,7 @@ import {Post} from '../../model/post.model';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
+import { HeaderHomeComponent } from '../header-home/header-home.component';
 
 @Component({
   selector: 'app-products',
@@ -41,12 +42,9 @@ export class ProductsComponent implements OnInit {
   //ADD PRODUCT TO CART
   addToCart(product: Post) {
     //CHECK LOGIN
-    console.log(this.quantity);
     if(localStorage.getItem('user')!== null)
     {
       this.cartService.addToCart(product);
-
-      window.alert('Your product has been added to the cart!');
     }
     else{
       window.alert('Please login or register');

@@ -11,21 +11,29 @@ export class CartService {
   constructor(private http: HttpClient) { }
   //ADD ITEM
   addToCart(product: Post) {
-
     var isSame = false;
-    this.items.forEach(item => {
-      if(item.id == product.id)
-      {
-        isSame = true;
-        item.quantity = item.quantity as number + 1 
-        console.log('Cart bi trung')
-      }
-    })
-    if(!isSame)
+    //CHECK QUANTIY 
+    var quantity = this.getQuantity();
+    //CHECK CART IS FULL
+    if(quantity == 5)
     {
-      console.log('Cart khong bi trung')
-      product.quantity = 1;
-      this.items.push(product);
+      window.alert('Cart is full, please checkout or remove product')
+    }
+    else{
+      window.alert('Your product has been added to the cart!');
+      //CHECK SAME PRODUCT 
+      this.items.forEach(item => {
+        if(item.id == product.id)
+        {
+          isSame = true;
+          item.quantity = item.quantity as number + 1 
+        }
+      })
+      if(!isSame)
+      {
+        product.quantity = 1;
+        this.items.push(product);
+      }
     }
   }
   //GET ITEM
@@ -33,10 +41,10 @@ export class CartService {
     return this.items;
   }
   getQuantity() {
-    
-    return this.items.reduce((sum:any,item) => {
+    return this.items.reduce((sum:any,item:any) => {
       return sum + item.quantity
     },0)
+    
   }
   //REMOVE ITEM
   removeItems(cart:any) {
