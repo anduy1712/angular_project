@@ -98,9 +98,14 @@
     font-weight: 500;
     margin-right: 8px;
   }
-  
+  .navbar_acc:hover {
+    cursor: pointer;
+  }
   .fa-shopping-cart {
     color:black;
+  }
+  .fa-shopping-cart:hover {
+    cursor: pointer;
   }
   .shoppingCart{
     position: relative;

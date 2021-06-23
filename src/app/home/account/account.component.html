@@ -31,18 +31,31 @@
                         <span >By creating an account you will be able to shop faster, be up to date on an order's status,
                              and keep track of the orders you have previously made.</span>
                     </div>
-                    <form #usersForm="ngForm" (ngSubmit)="onCreateUser(usersForm.value)" class="account__page-form">
+                    <form #usersForm="ngForm" (ngSubmit)="onCreateUser(usersForm.value)" class="account__page-form" >
                         <div class="form__group">
                             <label for="">First Name:</label>
-                            <input class="form__group-input" type="text" [(ngModel)]="user.name" name="name" placeholder="First Name">
+                            <input #name="ngModel" ngModel required minlength="4" maxlength="10" class="form__group-input" type="text" [(ngModel)]="user.name" name="name"   placeholder="First Name" >
+                            <div class="invalid" *ngIf="name.touched && !name.valid">
+                                <div *ngIf="name.errors?.required">Please enter your name</div>
+                                <div *ngIf="name.errors?.minlength">Please enter at least 4 characters</div>
+                                <div *ngIf="name.errors?.maxlength">Please enter up to 20 characters</div>
+                            </div>
                         </div>
                         <div class="form__group">
                             <label for="">Email:</label>
-                            <input class="form__group-input" type="text" [(ngModel)]="user.email" name="email" placeholder="Email">
+                            <input #emaila="ngModel" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form__group-input" type="text" [(ngModel)]="user.email" name="email" placeholder="Email"  >
+                            <div class="invalid" *ngIf="emaila.touched && !emaila.valid">
+                                <div *ngIf="emaila.errors?.required">Please enter your email</div>
+                                <div *ngIf="emaila.errors?.pattern">Please enter the correct email</div>
+                            </div>
                         </div>
                         <div class="form__group">
                                 <label for="">Password:</label>
-                                <input class="form__group-input" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
+                                <input #pass="ngModel" required pattern=".{8,}" ngModel class="form__group-input" type="password" [(ngModel)]="user.password" name="password" placeholder="Password">
+                                <div class="invalid" *ngIf="pass.touched && !pass.valid">
+                                    <div *ngIf="pass.errors?.required">Please enter your password</div>
+                                    <div *ngIf="pass.errors?.pattern">Please enter eight or more characters</div>
+                                </div>
                         </div>
                         
                         <button type="submit" class="btnn btn__watch">Create an account</button>
@@ -50,6 +63,7 @@
                                 
                         </div>
                     </form>
+                    
         </div>
     </div>
         
