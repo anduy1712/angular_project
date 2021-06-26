@@ -41,6 +41,7 @@ export class CartService {
     return this.items;
   }
   getQuantity() {
+    
     return this.items.reduce((sum:any,item:any) => {
       return sum + item.quantity
     },0)

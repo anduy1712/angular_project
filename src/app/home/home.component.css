@@ -450,14 +450,16 @@ a:hover {
   align-items: center;
 }
 
-
+.product_icon{
+  color: #e66c36;
+}
 
 
 
 
 
 .card_home {
-  /* width: 194px; */
+  width: 194px;
   margin: 0 auto;
   box-sizing: border-box;
 

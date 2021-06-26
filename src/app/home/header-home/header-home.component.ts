@@ -12,7 +12,7 @@ export class HeaderHomeComponent implements OnInit {
   isSignedIn = false
   email= '';
   constructor(private cartService: CartService,private firebaseService: FirebaseService) { }
-  items = this.cartService.getQuantity();
+  items = this.cartService.getItems() 
   
   ngOnInit(): void {
     if(localStorage.getItem('user')!== null)
@@ -21,9 +21,16 @@ export class HeaderHomeComponent implements OnInit {
     this.email = test.email;
     }
     else
-    this.isSignedIn = false
+    {this.isSignedIn = false}
+    this.items = this.items.reduce((sum:any,item:any) => {
+      return sum + item.quantity
+    },0)
   }
   
+  getCart(){
+    var test = this.cartService.getQuantity();
+    console.log(test);
+  }
   logOut(){
     this.isSignedIn= false;
     this.firebaseService.logout();

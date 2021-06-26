@@ -39,6 +39,17 @@ export class PostsComponent implements OnInit {
     private postsService: PostsService,
     public firebaseService: FirebaseService,
     private authService: AuthService,private router: Router) {}
+  filterName(e:any) {
+    let value = e.target.value.trim().toLowerCase();
+    var test = this.loadedPosts.filter(post => {
+      
+        
+        return post.title?.toLowerCase().indexOf(value) !== -1;
+      
+    })
+    this.loadedPosts = test;
+    console.log(test)
+  }
   //LOGOUT ACCOUNT 
   logout(){
     this.firebaseService.logout()
@@ -62,6 +73,8 @@ export class PostsComponent implements OnInit {
       postData.quantity = Number(postData.quantity);
 
       this.postsService.createAndStorePosts(postData);
+      this.post = {id:'',title:'',content:'',img:'',category: '',price:0,quantity:0};
+
       this.onFetchPosts()
     }
   }

@@ -488,7 +488,9 @@
   .product_img img {
     width: 90%;
   }
-  
+  .img-men{
+    width: 100%;
+  }
   .product_profile-heading {
     font-size: 20px;
   }

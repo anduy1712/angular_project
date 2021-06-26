@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
         if(localStorage.getItem('user')!== null)
       {
         var user = JSON.parse(localStorage.getItem('user')!)
-        this.isSignedIn = user.email == 'admin1@gmail.com' ? true : false;
+        this.isSignedIn = user.email == 'admin@gmail.com' ? true : false;
         console.log(this.isSignedIn);
       }
       else

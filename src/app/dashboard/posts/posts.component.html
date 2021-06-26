@@ -7,10 +7,13 @@
         <div class="card">
               <div class="card-body">
                   <div class="card-title">
-                      <h4>Table Basic</h4>
+                      <h4>Table Products</h4>
                       <p *ngIf="loadedPosts.length < 1 && !isFetching">No posts
     
                         available!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="text"   (change)="filterName($event)" class="form-control input-default" placeholder="Filter Name...">
                   </div>
                   <div class="table-responsive">
                       <table class="table">
@@ -27,7 +30,7 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <tr *ngFor="let post of loadedPosts | paginate: { itemsPerPage: 3, currentPage: p };let i = index ">
+                              <tr *ngFor="let post of loadedPosts | paginate: { itemsPerPage: 5, currentPage: p };let i = index ">
                                   <th>{{ 3 * (p - 1) + i + 1}}</th>
                                   <td >
                                     <img style="width:80px" src="{{ post.img }}" alt="">
